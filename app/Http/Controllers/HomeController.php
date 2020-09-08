@@ -25,9 +25,9 @@ class HomeController extends Controller
         $user->username = $request->username;
         $user->password = $request->password;
         $user->type = $request->type;
-        $user->name = $request->name;
-        $user->department = $request->department;
-        $user->cgpa = $request->cgpa;
+        $user->employee_name = $request->name;
+        $user->company_name = $request->companyname;
+        $user->contact_number = $request->contactnumber;
         
         $user->save();
 
