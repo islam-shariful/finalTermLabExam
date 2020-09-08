@@ -11,5 +11,5 @@ class User extends Model
     // const CREATED_AT = "create-time";
     // const UPDATED_AT = "Update_time";
 
-    protected $primaryKey = "username";
+    //protected $primaryKey = "username";
 }

@@ -14,9 +14,10 @@ class LoginController extends Controller
     public function validation(Request $request){
         // $user = DB::table('users')->get();
         $user = new User();
-        $userList = $user->where('username', $request->username)->get();
-        if($userList[0]['password'] == $request->password && $userList[0]['type'] == 'Admin'){
-            echo 'admin';
+        $userInfo = $user->where('username', $request->username)->get();
+        if($userInfo[0]['password'] == $request->password && $userInfo[0]['type'] == 'Admin'){
+            $userList = $user->get();
+            return view('admin.index')->with('userList', $userList);
         }
         else if($userList[0]['password'] == $request->password && $userList[0]['type'] == 'Employee'){
             echo 'employee';
