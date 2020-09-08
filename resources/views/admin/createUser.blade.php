@@ -27,12 +27,12 @@
                     <td><input type="text" name="name" placeholder="name"></td>
                 </tr>
                 <tr>
-                    <td>Department:</td>
-                    <td><input type="text" name="department" placeholder="department"></td>
+                    <td>Company:</td>
+                    <td><input type="text" name="companyname" placeholder="company name"></td>
                 </tr>
                 <tr>
-                    <td>CGPA:</td>
-                    <td><input type="text" name="cgpa" placeholder="cgpa"></td>
+                    <td>Contact Number:</td>
+                    <td><input type="text" name="contactnumber" placeholder="01*********"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Create"></td>

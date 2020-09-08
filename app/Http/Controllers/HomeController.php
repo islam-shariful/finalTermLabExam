@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\User;
 
 class HomeController extends Controller
@@ -16,7 +17,7 @@ class HomeController extends Controller
     }
     //Create 'GET'
     function creation(){
-        return view('home.createUser');
+        return view('admin.createUser');
     }
     //Create 'POST'
     function create(Request $request){
@@ -34,82 +35,64 @@ class HomeController extends Controller
         return redirect('home');
     }
     //edit 'GET'
-    function edit($userid){
+    function edit($username){
         $user = new User();
-        $data = $user->where('userid', $userid)
+        $data = $user->where('username', $username)
                         ->get();
 
         for($i=0; $i<count($data); $i++){
-            if($userid == $data[$i]['userid']){
+            if($username == $data[$i]['username']){
                 $user = [
-                    'userid'=>$data[$i]['userid'],
                     'username'=>$data[$i]['username'],
                     'password'=>$data[$i]['password'],
                     'type'=>$data[$i]['type'],
-                    'name'=>$data[$i]['name'],
-                    'department'=>$data[$i]['department'],
-                    'cgpa'=>$data[$i]['cgpa']
+                    'employeename'=>$data[$i]['employee_name'],
+                    'companyname'=>$data[$i]['company_name'],
+                    'contactnumber'=>$data[$i]['contact_number']
                 ];
-                return view('home.edit', $user);
+                return view('admin.editUser', $user);
             }
         }
     }
     //update 'POST'
-    function update($userid, Request $request){
-        $user = User::find($userid);
+    function update($username, Request $request){
 
-        $user->username = $request->username;
-        $user->password = $request->password;
-        $user->type = $request->type;
-        $user->name = $request->name;
-        $user->department = $request->department;
-        $user->cgpa = $request->cgpa;
-
-        $user->save();
-
+        DB::table('user')
+                ->where('username', $username)
+                ->update(['username' => $request->username,
+                        'password'=> $request->password,
+                        'type'=> $request->type,
+                        'employee_name'=> $request->name,
+                        'company_name'   => $request->companyname,
+                        'contact_number'   => $request->contactnumber]);
         return redirect('home');
     }
     //delete 'GET'
-    function delete($userid){
+    function delete($username){
         $user = new User();
-        $data = $user->where('userid', $userid)
+        $userInfo = $user->where('username', $username)
                         ->get();
 
-        for($i=0; $i<count($data); $i++){
-            if($userid == $data[$i]['userid']){
+        for($i=0; $i<count($userInfo); $i++){
+            if($username == $userInfo[$i]['username']){
                 $user = [
-                    'userid'=>$data[$i]['userid'],
-                    'username'=>$data[$i]['username'],
-                    'password'=>$data[$i]['password'],
-                    'type'=>$data[$i]['type'],
-                    'name'=>$data[$i]['name'],
-                    'department'=>$data[$i]['department'],
-                    'cgpa'=>$data[$i]['cgpa']
+                    'userid'=>$userInfo[$i]['userid'],
+                    'username'=>$userInfo[$i]['username'],
+                    'password'=>$userInfo[$i]['password'],
+                    'type'=>$userInfo[$i]['type'],
+                    'employeename'=>$userInfo[$i]['employee_name'],
+                    'companyname'=>$userInfo[$i]['company_name'],
+                    'contactnumber'=>$userInfo[$i]['contact_number']
                 ];
-                return view('home.delete', $user);
+                return view('admin.deleteUser', $user);
             }
         }
     }
     //Destroy
-    function destroy($userid, Request $request){
-        $user = User::find($userid);
-        $user->delete();
+    function destroy($username, Request $request){
+        DB::table('user')->delete($username);
+        DB::table('user')->where('username', $username)->delete();
 
         return redirect('home');
-    }
-    function details($id){
-        echo $id;
-    }
-    function getStudentList(){
-        $users = [
-                    ['id'=>'1','name'=>'sharif','email'=>'sharif@gmail.com','password'=>'070'],
-                    ['id'=>'2','name'=>'hossain','email'=>'hossain@gmail.com','password'=>'272'],
-                    ['id'=>'3','name'=>'isalm','email'=>'isalm@gmail.com','password'=>'373'],
-                ];
-
-        for($i=0; $i<count($users); $i++){
-            $users[$i]['password'] = Hash::make($users[$i]['password']);
-        }
-        return $users;
     }
 }

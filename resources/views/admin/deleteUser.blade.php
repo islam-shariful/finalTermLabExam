@@ -9,12 +9,8 @@
     <h1>Delete Page</h1>
     <form method="post">
     @csrf
-    <input type="hidden" name="_token" value="UUC3igkQVtN6CYZbePfQZ5FLXKPAok2fPS1sCABZ">
+    <!-- <input type="hidden" name="_token" value="UUC3igkQVtN6CYZbePfQZ5FLXKPAok2fPS1sCABZ"> -->
         <table>
-        <tr>
-                    <td>ID:</td>
-                    <td>{{$userid}}</td>
-                </tr>
                 <tr>
                     <td>Name:</td>
                     <td>{{$username}}</td>
@@ -29,15 +25,15 @@
                 </tr>
                 <tr>
                     <td>Full Name:</td>
-                    <td>{{$name}}</td>
+                    <td>{{$employeename}}</td>
                 </tr>
                 <tr>
-                    <td>Department:</td>
-                    <td>{{$department}}</td>
+                    <td>Company:</td>
+                    <td>{{$companyname}}</td>
                 </tr>
                 <tr>
-                    <td>CGPA:</td>
-                    <td>{{$cgpa}}</td>
+                    <td>Contact:</td>
+                    <td>{{$contactnumber}}</td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Confirm Delete"></td>

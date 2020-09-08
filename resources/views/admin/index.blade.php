@@ -41,8 +41,7 @@
                 <td>{{$userList[$i]['contact_number']}}</td>
                 <td>
                     <a href="/home/edit/{{$userList[$i]['username']}}">Edit</a> |
-                    <a href="/home/delete/{{$userList[$i]['username']}}">Delete</a> |
-                    <a href="/home/details/{{$userList[$i]['username']}}">Details</a>
+                    <a href="/home/delete/{{$userList[$i]['username']}}">Delete</a>
                 </td>
                 @endif
             </tr>

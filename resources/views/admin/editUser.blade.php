@@ -11,11 +11,7 @@
     @csrf
         <table>
                 <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="userid" value="{{$userid}}"></td>
-                </tr>
-                <tr>
-                    <td>Name</td>
+                    <td>User Name</td>
                     <td><input type="text" name="username" value="{{$username}}"></td>
                 </tr>
                 <tr>
@@ -28,15 +24,15 @@
                 </tr>
                 <tr>
                     <td>Full Name</td>
-                    <td><input type="text" name="name" value="{{$name}}"></td>
+                    <td><input type="text" name="name" value="{{$employeename}}"></td>
                 </tr>
                 <tr>
-                    <td>Department</td>
-                    <td><input type="text" name="department" value="{{$department}}"></td>
+                    <td>Company Name</td>
+                    <td><input type="text" name="companyname" value="{{$companyname}}"></td>
                 </tr>
                 <tr>
-                    <td>CGPA</td>
-                    <td><input type="text" name="cgpa" value="{{$cgpa}}"></td>
+                    <td>Contact Number</td>
+                    <td><input type="text" name="contactnumber" value="{{$contactnumber}}"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Update"></td>

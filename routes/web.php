@@ -21,14 +21,14 @@ Route::GET('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@validation');
 Route::get('/logout', 'LogoutController@index');
 
-//Route::middleware(['sess'])->group(function(){
+Route::middleware(['sess'])->group(function(){
     Route::get('/home', 'HomeController@index');
 
     //Route::middleware(['type'])->group(function(){
 
         Route::get('/home/createUser', 'HomeController@creation');
         Route::post('/home/createUser', 'HomeController@create');
-        
+
         Route::get('/home/edit/{id}', 'HomeController@edit');
         Route::post('/home/edit/{id}', 'HomeController@update');
     
@@ -41,4 +41,4 @@ Route::get('/logout', 'LogoutController@index');
         
     //});
     
-//});
+});
