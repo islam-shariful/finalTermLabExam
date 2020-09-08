@@ -16,8 +16,8 @@ class LoginController extends Controller
         $user = new User();
         $userInfo = $user->where('username', $request->username)->get();
         if($userInfo[0]['password'] == $request->password && $userInfo[0]['type'] == 'Admin'){
-            $userList = $user->get();
-            return view('admin.index')->with('userList', $userList);
+            $request->session()->put('username',$request->username);
+            return redirect('/home');
         }
         else if($userList[0]['password'] == $request->password && $userList[0]['type'] == 'Employee'){
             echo 'employee';
